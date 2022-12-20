@@ -42,7 +42,7 @@ const OrderTab = () => {
                 {/* <VStack> */}
                 {
                     orderData.map((e, i) => (
-                        <HStack bg={COLORS.ultraLightPrimary} my={4} px={2} py={2} justifyContent={"space-between"} alignItems="center" space={4} >
+                        <HStack key={i} bg={COLORS.ultraLightPrimary} my={3} px={2} py={3.5} justifyContent={"space-between"} alignItems="center" space={4} >
                             <Text fontSize={9} color={"#00f"} isTruncated>{e.recept_number}</Text>
                             <Text fontSize={12} bold color={"#252525"} isTruncated>{e.status}</Text>
                             <Text fontSize={11} italic color={"#252525"} isTruncated>{e.date}</Text>

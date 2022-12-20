@@ -4,8 +4,10 @@ import img from "../assets/image/login-bg.png"
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import { COLORS } from '../assets/Colors';
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export function retingView(rating, iconSize = 15) {
+
+export function retingView(rating, iconSize = 15) {  
     // {"count": 120, "rate": 3.9}
     // rating.rate
     if (!rating?.rate) {
@@ -33,6 +35,7 @@ export function retingView(rating, iconSize = 15) {
     )
 }
 const Product = () => {
+    const navigation = useNavigation();
     const [products, setProducts] = useState([])
     function getProducts() {
         let res = fetch('https://fakestoreapi.com/products')
@@ -48,30 +51,32 @@ const Product = () => {
 
     const renderItem = ({ item, index }) => {
         return (
-            <VStack
-                bg={COLORS.white}
-                w={Dimensions.get("window").width * 0.45}
-                my={2}
-                rounded={'sm'}
-                py={3}
-            >
-                <Center >
-                    <Image
-                        alt={item?.title ?? "product_image"}
-                        resizeMode={"contain"}
-                        source={{ uri: item?.image }}
-                        w={Dimensions.get("window").width * 0.25}
-                        h={Dimensions.get("window").width * 0.25}
-                        py={2}
-                    />
-                </Center>
-                <View px={2} py={1}>
-                    <Text fontWeight={"black"} fontSize={17}  >&#x20B9;{item?.price}</Text>
-                    <Text numberOfLines={2} fontWeight={"medium"} fontSize={12} color={"#444"}>{item?.title}</Text>
+            <Pressable onPress={()=>navigation.navigate("ProductDetailScreen")} > 
+                <VStack
+                    bg={COLORS.white}
+                    w={Dimensions.get("window").width * 0.45}
+                    my={2}
+                    rounded={'sm'}
+                    py={3}
+                >
+                    <Center >
+                        <Image
+                            alt={item?.title ?? "product_image"}
+                            resizeMode={"contain"}
+                            source={{ uri: item?.image }}
+                            w={Dimensions.get("window").width * 0.25}
+                            h={Dimensions.get("window").width * 0.25}
+                            py={2}
+                        />
+                    </Center>
+                    <View px={2} py={1}>
+                        <Text fontWeight={"black"} fontSize={17}  >&#x20B9;{item?.price}</Text>
+                        <Text numberOfLines={2} fontWeight={"medium"} fontSize={12} color={"#444"}>{item?.title}</Text>
 
-                    {retingView(item?.rating)}
-                </View>
-            </VStack>
+                        {retingView(item?.rating)}
+                    </View>
+                </VStack>
+            </Pressable>
         )
     }
     return (

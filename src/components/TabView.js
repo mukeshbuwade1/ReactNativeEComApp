@@ -24,7 +24,7 @@ export default function TabViewExample() {
         <TabBar
             {...props}
             style={styles.tabView}
-            activeColor={COLORS.primary}
+            activeColor={COLORS.lightPrimary}
             inactiveColor={COLORS.white}
             indicatorStyle={{ backgroundColor: COLORS.primary }}
             // style={{ backgroundColor: 'pink', height: 30 }}

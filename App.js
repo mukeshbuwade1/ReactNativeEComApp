@@ -7,12 +7,17 @@ import Home from "./src/screens/Home";
 import { COLORS } from "./src/assets/Colors";
 import ProductDetailScreen from "./src/screens/ProductDetailScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
+import CartScreen from "./src/screens/CartScreen";
+import AddressScreen from "./src/screens/AddressScreen";
+import AddNewAddress from "./src/components/AddNewAddress";
+import RootNavigation from "./src/screens/RootNavigation";
+
 
 export default function App() {
-  return (
+  return (   
     <NativeBaseProvider>
       <StatusBar backgroundColor={COLORS.primary} />
-      <ProfileScreen/>
+      <RootNavigation/>
     </NativeBaseProvider>
   );
 }

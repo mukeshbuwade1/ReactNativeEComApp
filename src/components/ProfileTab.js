@@ -1,6 +1,9 @@
-import { Box, Button, Center, FlatList, Flex, FormControl, Heading, HStack, Image, Input, Pressable, ScrollView, Text, View, VStack } from 'native-base'
+import { Box, Button, Center, Container, FlatList, Flex, FormControl, Heading, HStack, Image, Input, Pressable, ScrollView, Text, View, VStack } from 'native-base'
 import React from 'react'
 import { COLORS } from '../assets/Colors'
+import Icon from 'react-native-vector-icons/dist/Ionicons';
+import ButtonComp from './ButtonComp';
+import { useNavigation } from '@react-navigation/native';
 
 const profileData = [
     {
@@ -17,8 +20,10 @@ const profileData = [
     },
 ]
 
-const ProfileTab = () => {
+const ProfileTab = (props) => {
+    const navigation =useNavigation()
     return (
+
         <Box w={"full"}>
             <ScrollView>
                 <VStack mt={5} px={3}>
@@ -28,7 +33,8 @@ const ProfileTab = () => {
                                 <FormControl.Label
                                     _text={{
                                         fontSize: "14px",
-                                        fontWeight: "600"
+                                        fontWeight: "600",
+                                        color: COLORS.primary
                                     }}>
                                     {e.Label}
                                 </FormControl.Label>
@@ -52,16 +58,19 @@ const ProfileTab = () => {
                         ))
                     }
 
-                    <Pressable
-                        bg={COLORS.primary}
-                        py={3}
-                        px={5}
-                        borderRadius={50}
-                        w={"100%"}
-                        alignItems={"center"}
-                        mt={8}>
-                        <Text color={COLORS.white} fontWeight={"semibold"}>UPDATE PROFILE</Text>
-                    </Pressable>
+                    <ButtonComp
+                        title="UPDATE PROFILE"
+                        icon_name="person"
+                    />
+                    <ButtonComp
+                        title="PAYMENT MODES"
+                        icon_name="card"
+                    />
+                    <ButtonComp
+                        title="MANAGE ADDRESS"
+                        icon_name="location"
+                        onPress={()=>navigation.navigate("AddressScreen")}
+                    />
                 </VStack>
             </ScrollView>
         </Box>

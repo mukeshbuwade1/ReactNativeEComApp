@@ -5,8 +5,9 @@ import { COLORS } from '../assets/Colors';
 import { Dimensions } from 'react-native';
 import { retingView } from '../components/Product';
 import NumericInput from 'react-native-numeric-input';
+
 const w = Dimensions.get("window").width
-const ProductDetailScreen = () => {
+const ProductDetailScreen = (props) => {
     const [product, setProduct] = useState({})
     const [productCount, setProductCount] = useState(1)
 
@@ -30,24 +31,25 @@ const ProductDetailScreen = () => {
         return `${date.getDate()}-${(date.getMonth()) + 1}-${date.getFullYear()}`
     }
     return (
-        <Box px={3}  bg={COLORS.white} flex={1}>
+        <Box px={3} bg={COLORS.white} flex={1}>
             <Pressable bg={COLORS.primary} w={35} h={35}
                 rounded={45} zIndex={10} justifyContent={"center"} alignItems={"center"}
                 position={"absolute"}
                 top={5}
-                left={3} >
+                left={3}
+                onPress={()=>props.navigation.pop()} >
                 <Icon name={"chevron-back-sharp"} color={COLORS.white} size={25} />
             </Pressable>
             <ScrollView showsVerticalScrollIndicator={false} >
                 <Center p={5} >
-                    <Image
-                        alt='product image'
-                        source={{ uri: product.image }}
-                        resizeMode={"contain"}
-                        w={w * 0.7}
-                        h={w * 0.7}
-                        borderWidth={1}
-                    />
+                        <Image
+                            alt='product image'
+                            source={{ uri: product.image }}
+                            resizeMode={"contain"}
+                            w={w * 0.7}
+                            h={w * 0.7}
+                            borderWidth={1}
+                        />
                 </Center>
                 <Heading mb={2} fontSize={16}>{product.title}</Heading>
                 {
@@ -81,6 +83,10 @@ const ProductDetailScreen = () => {
                     rounded={50}
                     my={5}
                     bg={COLORS.primary}
+                    onPress={() => props.navigation.navigate("CartScreen")}
+                    _pressed={{
+                        bg: COLORS.lightPrimary
+                    }}
                 >
                     <HStack space={2}>
                         <Heading color={COLORS.white} fontSize={15}>

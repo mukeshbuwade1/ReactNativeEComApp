@@ -1,4 +1,3 @@
-
 import { Box, Button, Center, FlatList, Flex, Heading, HStack, Image, Input, Pressable, ScrollView, Text, View, VStack } from 'native-base'
 import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
