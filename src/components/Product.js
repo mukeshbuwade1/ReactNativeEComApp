@@ -18,10 +18,10 @@ export function retingView(rating, iconSize = 15) {
         else arr.push(i)
     }
     return (
-        <HStack>
+        <HStack >
             {
-                arr.map(() => (
-                    <Icon name="star" size={iconSize} color={COLORS.rating_color} />
+                arr.map((e) => (
+                    <Icon key={e} name="star" size={iconSize} color={COLORS.rating_color} />
                 ))
             }
             {
