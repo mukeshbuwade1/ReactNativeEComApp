@@ -11,13 +11,16 @@ import CartScreen from "./src/screens/CartScreen";
 import AddressScreen from "./src/screens/AddressScreen";
 import AddNewAddress from "./src/components/AddNewAddress";
 import RootNavigation from "./src/screens/RootNavigation";
-
+import { Provider } from "react-redux";
+import {store} from "./src/redux/store";
 
 export default function App() {
-  return (   
+  return (
     <NativeBaseProvider>
-      <StatusBar backgroundColor={COLORS.primary} />
-      <RootNavigation/>
+      <Provider store={store}>
+        <StatusBar backgroundColor={COLORS.primary} />
+        <RootNavigation />
+      </Provider>
     </NativeBaseProvider>
   );
 }
