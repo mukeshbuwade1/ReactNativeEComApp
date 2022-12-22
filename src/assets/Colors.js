@@ -11,5 +11,6 @@ dimGray:"#696969",
 warning:"#eed202",
 darkYellow:" #c69035",
 lightYellow:"#fadb84",
-ultraLightYellow:"#fcf2d4"
+ultraLightYellow:"#fcf2d4",
+danger:"#c91d12"
 }
